@@ -121,16 +121,20 @@ public class DisplayActivity extends AppCompatActivity {
     public void updateBackground(boolean bgOn) {
         // set to normal sprout beginning
         int imageID = android.R.drawable.ic_menu_camera;
+        int imageIDBG = android.R.drawable.ic_menu_camera;
         // change image ID based on balance
         if (balanceAmount < budgetAmount) {
             // sad sprout
             imageID = R.drawable.uncomfort_img;
+            imageIDBG = R.drawable.uncomfort_bg;
         } else if (balanceAmount > goalAmount) {
             // happy sprout
             imageID = R.drawable.supercomfort_img;
+            imageIDBG = R.drawable.supercomfort_bg;
         } else {
             // okay sprout
             imageID = R.drawable.comfort_img;
+            imageIDBG = R.drawable.comfort_bg;
         }
 
         // update the wallpaper if toggle is on
@@ -138,7 +142,7 @@ public class DisplayActivity extends AppCompatActivity {
             // Set the wallpaper
             WallpaperManager myWallpaperManager = WallpaperManager.getInstance(getApplicationContext());
             try {
-                Drawable myDrawable = ResourcesCompat.getDrawable(getResources(), imageID, null);
+                Drawable myDrawable = ResourcesCompat.getDrawable(getResources(), imageIDBG, null);
                 myWallpaperManager.setBitmap(((BitmapDrawable) myDrawable).getBitmap());
             } catch (IOException e) {
                 e.printStackTrace();
