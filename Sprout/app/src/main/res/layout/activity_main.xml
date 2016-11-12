@@ -11,31 +11,21 @@
     android:gravity="center"
     tools:context="hu.ait.android.sprout.MainActivity">
 
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"/>
     <TextView
-        android:id="@+id/text_view_welcome"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to Sprout!" />
+        android:text="Sprout"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingBottom="20dp"
+        />
 
-    <EditText
-        android:id="@+id/edit_text_bank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Bank"/>
-    <EditText
-        android:id="@+id/edit_text_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="User ID"/>
-    <EditText
-        android:id="@+id/edit_text_pass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="User PW"/>
+    <include layout="@layout/card_info"/>
 
-    <Button
-        android:id="@+id/button_import_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Import Mint Info"/>
 </LinearLayout>
