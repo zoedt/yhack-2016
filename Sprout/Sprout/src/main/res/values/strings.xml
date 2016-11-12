@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Sprout</string>
+    <string name="menu_add_todo">Add todo</string>
+    <string name="hint_add_todo">Todo text</string>
+    <string name="cb_is_done">Is done</string>
+    <string name="button_save">Save</string>
+    <string name="error_field_empty">This field can not be empty!</string>
+    <string name="button_edit">Edit</string>
+    <string name="text_cancelled">Action cancelled</string>
+    <string name="done">Done</string>
+    <string name="not_done">Not Done</string>
+    <string name="category1">VERY IMPORTANT</string>
+    <string name="category2">SOMEWHAT IMPORTANT</string>
+    <string name="category3">NOT IMPORTANT</string>
+    <string name="priority_error">PRIORITY ERROR</string>
+    <string name="sort_by_priority">Sort by Priority</string>
+    <string name="turn_on">Turn background on</string>
+    <string name="turn_off">Turn background off</string>
+</resources>

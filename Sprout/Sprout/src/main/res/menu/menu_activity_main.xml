@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_add_todo"
+        android:title="@string/menu_add_todo" />
+
+    <item
+        android:id="@+id/action_sort_priority"
+        android:title="@string/sort_by_priority" />
+
+    <item
+        android:id="@+id/action_on_off"
+        android:title="@string/turn_off" />
+</menu>
