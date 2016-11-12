@@ -23,10 +23,12 @@
         android:layout_height="wrap_content"
         android:hint="Bank"/>
     <EditText
+        android:id="@+id/edit_text_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="User ID"/>
     <EditText
+        android:id="@+id/edit_text_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="User PW"/>
