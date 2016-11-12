@@ -99,6 +99,7 @@
                     android:layout_weight="7"
                     android:paddingLeft="@dimen/activity_vertical_margin"
                     android:id="@+id/edit_text_pass"
+                    android:password="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textSize="16sp"/>
             </LinearLayout>
