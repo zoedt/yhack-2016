@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -37,6 +38,8 @@ public class DisplayActivity extends AppCompatActivity {
     private int balanceAmount;
     private int goalAmount;
     private int budgetAmount;
+    private int heightScreen;
+    private int widthScreen;
     public static final String ROOT_URL = "http://intuit-mint.herokuapp.com/";
     private List<Transaction> transactions;
 
@@ -59,7 +62,11 @@ public class DisplayActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                goalAmount = Integer.parseInt(etGoal.getText().toString());
+                if (etGoal.getText().toString().equals("")) {
+                    goalAmount = 0;
+                } else {
+                    goalAmount = Integer.parseInt(etGoal.getText().toString());
+                }
                 updateBackground(backgroundOn);
             }
 
@@ -81,7 +88,11 @@ public class DisplayActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                budgetAmount = Integer.parseInt(etBudget.getText().toString());
+                if (etBudget.getText().toString().equals("")) {
+                    budgetAmount = 0;
+                } else {
+                    budgetAmount = Integer.parseInt(etBudget.getText().toString());
+                }
                 updateBackground(backgroundOn);
             }
 
@@ -116,6 +127,12 @@ public class DisplayActivity extends AppCompatActivity {
                 getTransactions();
             }
         });
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        // get the height and width of screen
+        heightScreen = metrics.heightPixels;
+        widthScreen = metrics.widthPixels;
     }
 
     public void updateBackground(boolean bgOn) {
@@ -144,6 +161,7 @@ public class DisplayActivity extends AppCompatActivity {
             try {
                 Drawable myDrawable = ResourcesCompat.getDrawable(getResources(), imageIDBG, null);
                 myWallpaperManager.setBitmap(((BitmapDrawable) myDrawable).getBitmap());
+                myWallpaperManager.suggestDesiredDimensions(widthScreen, heightScreen);
             } catch (IOException e) {
                 e.printStackTrace();
             }
