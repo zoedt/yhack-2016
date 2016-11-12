@@ -21,24 +21,49 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPref.edit();
 
         mImportButton = (Button) findViewById(R.id.button_import_info);
         mBank = (EditText) findViewById(R.id.edit_text_bank);
         mUser = (EditText) findViewById(R.id.edit_text_user);
         mPass = (EditText) findViewById(R.id.edit_text_pass);
 
-        mImportButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mBank.getText().toString().trim().equals("") || mUser.getText().toString().trim().equals("") || mPass.getText().toString().trim().equals("")){
-                    Toast toast = Toast.makeText(getApplicationContext(), "Fill out all of the information, please", Toast.LENGTH_SHORT);
-                    toast.show();
-                } else {
-                    Intent intentAddTodo = new Intent(MainActivity.this, DisplayActivity.class);
-                    startActivity(intentAddTodo);
+        if(sharedPref.getInt( getString(R.string.saved_import), 0 ) == 1){
+            Intent intentAddTodo = new Intent(MainActivity.this, DisplayActivity.class);
+            startActivity(intentAddTodo);
+            mImportButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mBank.getText().toString().trim().equals("") || mUser.getText().toString().trim().equals("") || mPass.getText().toString().trim().equals("")) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Fill out all of the information, please", Toast.LENGTH_SHORT);
+                        toast.show();
+                    } else {
+                        editor.putInt(getString(R.string.saved_import), 1);
+                        editor.commit();
+
+                        Intent intentAddTodo = new Intent(MainActivity.this, DisplayActivity.class);
+                        startActivity(intentAddTodo);
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            mImportButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mBank.getText().toString().trim().equals("") || mUser.getText().toString().trim().equals("") || mPass.getText().toString().trim().equals("")){
+                        Toast toast = Toast.makeText(getApplicationContext(), "Fill out all of the information, please", Toast.LENGTH_SHORT);
+                        toast.show();
+                    } else {
+                        editor.putInt(getString(R.string.saved_import), 1);
+                        editor.commit();
+
+                        Intent intentAddTodo = new Intent(MainActivity.this, DisplayActivity.class);
+                        startActivity(intentAddTodo);
+                    }
+                }
+            });
+        }
+
     }
 
 

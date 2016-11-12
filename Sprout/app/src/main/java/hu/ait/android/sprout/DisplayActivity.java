@@ -5,15 +5,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -49,7 +46,7 @@ public class DisplayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setIcon(android.R.drawable.ic_menu_save);
+        getSupportActionBar().setIcon(R.mipmap.ic_app_icon);
 
         // get the goal
         etGoal = (EditText) findViewById(R.id.etGoal);
@@ -116,7 +113,6 @@ public class DisplayActivity extends AppCompatActivity {
         fabRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO call api, refresh balance, and refresh background
                 getTransactions();
             }
         });
@@ -128,13 +124,13 @@ public class DisplayActivity extends AppCompatActivity {
         // change image ID based on balance
         if (balanceAmount < budgetAmount) {
             // sad sprout
-            imageID = android.R.drawable.ic_menu_add;
+            imageID = R.drawable.uncomfort_img;
         } else if (balanceAmount > goalAmount) {
             // happy sprout
-            imageID = android.R.drawable.ic_menu_camera;
+            imageID = R.drawable.supercomfort_img;
         } else {
             // okay sprout
-            imageID = android.R.drawable.ic_menu_agenda;
+            imageID = R.drawable.comfort_img;
         }
 
         // update the wallpaper if toggle is on
@@ -152,44 +148,31 @@ public class DisplayActivity extends AppCompatActivity {
     }
 
     private void getTransactions(){
-        //Creating a rest adapter
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(ROOT_URL)
                 .build();
 
-        //Log.e("hi", "enter transactions");
-
-        //Creating an object of our api interface
         MintAPI api = adapter.create(MintAPI.class);
 
-        //Defining the method
         api.getTransactions(new Callback<List<Transaction>>() {
             @Override
             public void success(List<Transaction> list, Response response) {
 
-                //Storing the data in our list
                 transactions = list;
-
-                //Calling a method to show the list
                 showTotal();
             }
 
             @Override
             public void failure(RetrofitError error) {
-                //you can handle the errors here
-                // Log.e("hi", error.getMessage());
+                //handle errors here
             }
         });
     }
 
     private void showTotal(){
-        String[] items = new String[transactions.size()];
         int total = 0;
 
-        //Traversing through the whole list to get all the names
         for(int i=0; i<transactions.size()/4; i++){
-            //Storing names to string array
-            items[i] = transactions.get(i).getName();
             total += transactions.get(i).getAmount();
         }
 
@@ -197,8 +180,6 @@ public class DisplayActivity extends AppCompatActivity {
             total = total * -1;
         }
         total = total % 4000;
-        // Log.e("hi", "append");
-        // total = 0;
 
         balanceAmount = total;
         tvBalance.setText(Integer.toString(balanceAmount));
