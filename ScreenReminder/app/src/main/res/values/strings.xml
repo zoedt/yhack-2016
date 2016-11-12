@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sprout</string>
+    <string name="app_name">ScreenReminder</string>
     <string name="menu_add_todo">Add todo</string>
     <string name="hint_add_todo">Todo text</string>
     <string name="cb_is_done">Is done</string>
