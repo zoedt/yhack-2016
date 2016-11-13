@@ -1,6 +1,7 @@
 package hu.ait.android.sprout;
 
 import android.app.WallpaperManager;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -134,6 +137,25 @@ public class DisplayActivity extends AppCompatActivity {
         // get the height and width of screen
         heightScreen = metrics.heightPixels;
         widthScreen = metrics.widthPixels;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent intentInvest = new Intent(DisplayActivity.this, InvestActivity.class);
+            startActivity(intentInvest);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void updateBackground(boolean bgOn) {
