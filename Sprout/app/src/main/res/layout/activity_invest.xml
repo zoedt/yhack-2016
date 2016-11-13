@@ -17,7 +17,7 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:gravity="center"
-        android:text="As a participant in the global market, you want to be able to make your money grow with investments made with extra funds! Just remember to do research before buying any bonds/stocks and eliminate any previous debts first. To actually make investments, you would have to go through a brokerage firm (either online or traditional). Below, we calculate how much you would have earned from treasury bonds (investment in the U.S. government) and stocks from two companies had you invested half of your current balance five years ago."        />
+        android:text="As a participant in the global market, you want to be able to make your money grow with investments made with extra funds! Just remember to do research before buying any bonds/stocks and eliminate any previous debts first. To actually make investments, you would have to go through a brokerage firm (either online or traditional). Below, we calculate how much you would have earned from stocks from two companies had you invested half of your current balance five years ago."        />
     <TextView
         android:id="@+id/text_view_invest_balance"
         android:layout_width="match_parent"
