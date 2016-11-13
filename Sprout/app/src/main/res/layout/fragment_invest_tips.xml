@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     tools:context="hu.ait.android.invest.InvestTipsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/text_view_invest_tab_1"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Investing tips 1" />
+        android:src="@drawable/goog"/>
+
+
 
 </FrameLayout>
