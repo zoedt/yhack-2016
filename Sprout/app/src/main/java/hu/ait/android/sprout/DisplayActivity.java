@@ -151,6 +151,7 @@ public class DisplayActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             Intent intentInvest = new Intent(DisplayActivity.this, InvestActivity.class);
+            intentInvest.putExtra("KEY_BALANCE", balanceAmount);
             startActivity(intentInvest);
             return true;
         }
